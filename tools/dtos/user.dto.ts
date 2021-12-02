@@ -2,21 +2,11 @@ import { GroupModel } from "tools/models/group.model";
 import { RoleModel } from "tools/models/role.model";
 
 export class UserCreateDto {
-    @IsNotEmpty()
-    @Length(2, 20)
-    @ApiProperty()
     name: string;
-    @ApiProperty()
     surname: string;
-    @ApiProperty()
     image: string;
-    @ApiProperty()
     password: string;
-    @ApiProperty()
-    @IsEmail()
     email: string;
-    @ApiProperty()
-    @IsDateString()
     birthDay: Date;
   }
   
