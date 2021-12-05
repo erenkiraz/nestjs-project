@@ -5,4 +5,6 @@ export class FilterModel {
     sortBy: string;
     queryText: string;
     searchBy: string;
+    startDate: Date;
+    endDate: Date;
   }
