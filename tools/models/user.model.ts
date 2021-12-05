@@ -19,6 +19,7 @@ export class UserModel {
     name:{ type: String, required: [true, 'user name is required']},
     surname:String,
     email:String,
+    password:String,
     birthDay:Date,
     audit: Object,
     roles: Array,
