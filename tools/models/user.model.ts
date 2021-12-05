@@ -18,7 +18,7 @@ export class UserModel {
 
   export const UserSchema = new mongoose.Schema(
     {
-    name:String,
+    name:{ type: String, required: [true, 'user name is required']},
     surname:String,
     email:String,
     birthDay:Date,
