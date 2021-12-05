@@ -1,13 +1,18 @@
 import { GroupModel } from "tools/models/group.model";
 import { RoleModel } from "tools/models/role.model";
+import { IsNotEmpty, Length, IsEmail, IsDateString } from 'class-validator';
 
 export class UserCreateDto {
-    name: string;
-    surname: string;
-    image: string;
-    password: string;
-    email: string;
-    birthDay: Date;
+  @IsNotEmpty()
+  @Length(2, 20)
+  name: string;
+  surname: string;
+  image: string;
+  password: string;
+  @IsEmail()
+  email: string;
+  @IsDateString()
+  birthDay: Date;
   }
   
   // tslint:disable-next-line:max-classes-per-file
