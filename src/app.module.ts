@@ -1,5 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthGuard } from 'libs/guards/auth.guard';
 import { TokenMiddleware } from 'libs/middlewares/token.middleware';
 import environment from 'tools/environment/environment';
 import { AppController } from './app.controller';
@@ -17,7 +19,13 @@ import { UserModule } from './user/user.module';
     MongooseModule.forRoot(environment.mongoUrl)
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 
 export class AppModule implements NestModule {

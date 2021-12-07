@@ -5,7 +5,7 @@ import {
     HttpException,
     HttpStatus,
     Inject,
-    Module,
+    forwardRef
   } from '@nestjs/common';
   import { Reflector } from '@nestjs/core';
   import { RoleModel } from 'tools/models/role.model';
@@ -16,7 +16,6 @@ import {
   export class AuthGuard implements CanActivate {
     constructor(
       private readonly reflector: Reflector,
-      @Inject('GroupService') private readonly groupService: GroupService,
     ) {}
   
     canActivate(context: ExecutionContext): boolean {
@@ -50,7 +49,7 @@ import {
       });
       await Promise.all(
         userGroups.map(async data => {
-          const groupRoles = await this.groupService.findOne(data.id);
+          const groupRoles = {}
           groupRoles[0].roles.map(resp => {
             allUsersRoles.push(resp['name']);
           });

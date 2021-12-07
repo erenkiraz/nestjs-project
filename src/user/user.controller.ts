@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseFilters } from '@nestjs/common';
+import { Roles } from 'libs/decorators/role.decorator';
 import { AllExceptionFilter } from 'libs/filters/all-exception.filter';
 import { UserCreateDto, UserUpdateDto } from 'tools/dtos/user.dto';
 import { FilterModel } from 'tools/models/filter.model';
@@ -21,6 +22,7 @@ export class UserController {
     }
 
     @Get(':id')
+    @Roles('Developer')
     async getUSer(@Param() param): Promise<UserModel> {
         return await this.userService.findOne(param.id);
     }
