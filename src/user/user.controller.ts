@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseFilters } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'libs/decorators/role.decorator';
 import { AllExceptionFilter } from 'libs/filters/all-exception.filter';
 import { UserCreateDto, UserUpdateDto } from 'tools/dtos/user.dto';
@@ -7,6 +8,8 @@ import { UserModel } from 'tools/models/user.model';
 import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
+@ApiBearerAuth()
+@ApiTags('user')
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) { }
