@@ -18,7 +18,7 @@ export class UserCreateDto {
   @IsEmail()
   email: string;
   @IsDateString()
-  birthDay: Date;
+  birthDay: Date; 
   }
   
   // tslint:disable-next-line:max-classes-per-file
